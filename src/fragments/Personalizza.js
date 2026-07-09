@@ -143,7 +143,6 @@ function Personalizza() {
   // Drag dell'immagine sul preview
   function onMouseDown(e) {
     e.preventDefault();
-    const rect = previewRef.current.getBoundingClientRect();
     setDragging(true);
     setDragStart({
       mx: e.clientX, my: e.clientY,
@@ -165,7 +164,6 @@ function Personalizza() {
   // Touch support
   function onTouchStart(e) {
     const t = e.touches[0];
-    const rect = previewRef.current.getBoundingClientRect();
     setDragging(true);
     setDragStart({ mx: t.clientX, my: t.clientY, ox: imgPos.x, oy: imgPos.y });
   }
