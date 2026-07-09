@@ -1,0 +1,67 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: center;
+  padding: 11px 40px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff9fd;
+  margin: 40px 0 50px 0;
+  animation: floatIn 0.8s ease both;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  font-family: 'Georgia', serif;
+  font-size: 1.05rem;
+  color: #444;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: color 0.6s ease, background-color 0.7s ease;
+}
+
+.navbar-link:hover {
+  color: #111;
+  background-color: #fbd5e8;
+}
+
+.navbar-link.active {
+  color: #111;
+  font-weight: bold;
+  border-bottom: 2px solid #f3d2e3;
+}
+
+.navbar-separator {
+  color: #ccc;
+  font-size: 1.1rem;
+  list-style: none;
+  user-select: none;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+ 
+/* Ombra leggera quando si scrolla — dà profondità senza essere pesante */
+.navbar--scrolled {
+  background: rgba(253, 248, 245, 0.96);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 12px rgba(196, 123, 138, 0.12);
+}
