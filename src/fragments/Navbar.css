@@ -36,13 +36,13 @@
 
 .navbar-link:hover {
   color: #111;
-  background-color: #fbd5e8;
+  background-color: var(--rosa-border);
 }
 
 .navbar-link.active {
   color: #111;
   font-weight: bold;
-  border-bottom: 2px solid #f3d2e3;
+  border-bottom: 2px solid var(--rosa-mid);
 }
 
 .navbar-separator {

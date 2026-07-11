@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import './Personalizza.css';
 
 // ─── Configurazione WhatsApp ───────────────────────────────────────────────
 // Sostituisci con il numero di Isabella (formato internazionale, senza + o spazi)
@@ -196,76 +197,68 @@ function Personalizza() {
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
-    <section id="personalizza" style={styles.section}>
-      <div style={styles.container}>
+    <section id="personalizza" className="personalizza-section">
+      <div className="personalizza-container">
 
         {/* Intestazione */}
-        <div style={styles.header}>
-          <h2 style={styles.h2}>Crea il tuo ricamo</h2>
-          <p style={styles.lead}>
+        <div className="personalizza-header">
+          <h2 className="personalizza-title">Crea il tuo ricamo</h2>
+          <p className="personalizza-lead">
             Scegli il prodotto, carica il tuo disegno o foto e dicci come lo vuoi.
           </p>
         </div>
 
         {/* Step indicator */}
-        <div style={styles.steps}>
+        <div className="step-row">
           {["Prodotto", "Design", "Riepilogo"].map((s, i) => (
             <button
               key={s}
               onClick={() => setStep(i + 1)}
-              style={{
-                ...styles.stepBtn,
-                ...(step === i + 1 ? styles.stepActive : {}),
-                ...(step > i + 1  ? styles.stepDone  : {}),
-              }}
+              className={`step-btn ${
+                step === i + 1 ? "step-btn--active" : step > i + 1 ? "step-btn--done" : ""
+              }`}
             >
-              <span style={styles.stepNum}>{i + 1}</span> {s}
+              <span className="step-num">{i + 1}</span> {s}
             </button>
           ))}
         </div>
 
-        <div style={styles.grid}>
+        <div className="personalizza-grid">
 
           {/* ── COLONNA SINISTRA ── */}
-          <div style={styles.left}>
+          <div className="personalizza-col-left">
 
             {/* Step 1 — Prodotto */}
             {step === 1 && (
               <>
-                <p style={styles.label}>Che cosa vuoi ricamare?</p>
-                <div style={styles.prodGrid}>
+                <p className="field-label">Che cosa vuoi ricamare?</p>
+                <div className="prod-grid">
                   {PRODOTTI.map(p => (
                     <button
                       key={p.id}
                       onClick={() => handleProdotto(p.id)}
-                      style={{
-                        ...styles.prodBtn,
-                        ...(prodotto === p.id ? styles.prodBtnSel : {}),
-                      }}
+                      className={`prod-btn ${prodotto === p.id ? "prod-btn--selected" : ""}`}
                     >
-                      <span style={styles.prodEmoji}>{p.emoji}</span>
-                      <span style={styles.prodLabel}>{p.label}</span>
+                      <span className="prod-emoji">{p.emoji}</span>
+                      <span className="prod-label">{p.label}</span>
                     </button>
                   ))}
                 </div>
 
-                <p style={styles.label}>Taglia</p>
-                <div style={styles.taglie}>
+                <p className="field-label">Taglia</p>
+                <div className="taglia-row">
                   {prodDati.taglie.map(t => (
                     <button
                       key={t}
                       onClick={() => setTaglia(t)}
-                      style={{
-                        ...styles.tagliaBtn,
-                        ...(taglia === t ? styles.tagliaBtnSel : {}),
-                      }}
+                      className={`taglia-btn ${taglia === t ? "taglia-btn--selected" : ""}`}
                     >
                       {t}
                     </button>
                   ))}
                 </div>
 
-                <button style={styles.nextBtn} onClick={() => setStep(2)}>
+                <button className="btn-primary" onClick={() => setStep(2)}>
                   Continua →
                 </button>
               </>
@@ -274,14 +267,14 @@ function Personalizza() {
             {/* Step 2 — Design */}
             {step === 2 && (
               <>
-                <p style={styles.label}>Carica il tuo disegno o foto</p>
-                <div style={styles.uploadArea} onClick={() => fileRef.current.click()}>
+                <p className="field-label">Carica il tuo disegno o foto</p>
+                <div className="upload-area" onClick={() => fileRef.current.click()}>
                   {imgSrc
-                    ? <img src={imgSrc} alt="design" style={styles.thumbImg} />
+                    ? <img src={imgSrc} alt="design" className="upload-thumb" />
                     : <>
-                        <span style={styles.uploadIcon}>📎</span>
-                        <span style={styles.uploadText}>Clicca per caricare</span>
-                        <span style={styles.uploadHint}>JPG, PNG, GIF — max 10 MB</span>
+                        <span className="upload-icon">📎</span>
+                        <span className="upload-text">Clicca per caricare</span>
+                        <span className="upload-hint">JPG, PNG, GIF — max 10 MB</span>
                       </>
                   }
                 </div>
@@ -289,29 +282,29 @@ function Personalizza() {
                   style={{ display: "none" }} onChange={handleFile} />
 
                 {imgSrc && (
-                  <div style={styles.imgControls}>
-                    <button style={styles.ctrlBtn} onClick={() => setRotation(r => r - 90)}>↺ Ruota</button>
-                    <button style={styles.ctrlBtn} onClick={() => setImgSize(s => Math.max(30, s - 10))}>− Rimpiccoli</button>
-                    <button style={styles.ctrlBtn} onClick={() => setImgSize(s => Math.min(160, s + 10))}>+ Ingrandisci</button>
-                    <button style={{ ...styles.ctrlBtn, ...styles.ctrlDanger }}
+                  <div className="img-controls">
+                    <button className="ctrl-btn" onClick={() => setRotation(r => r - 90)}>↺ Ruota</button>
+                    <button className="ctrl-btn" onClick={() => setImgSize(s => Math.max(30, s - 10))}>− Rimpiccoli</button>
+                    <button className="ctrl-btn" onClick={() => setImgSize(s => Math.min(160, s + 10))}>+ Ingrandisci</button>
+                    <button className="ctrl-btn ctrl-btn--danger"
                       onClick={() => { setImgSrc(null); fileRef.current.value = ""; }}>
                       ✕ Rimuovi
                     </button>
                   </div>
                 )}
 
-                <p style={{ ...styles.label, marginTop: "1.5rem" }}>Note per Isabella</p>
+                <p className="field-label field-label--spaced">Note per Isabella</p>
                 <textarea
-                  style={styles.textarea}
+                  className="field-textarea"
                   rows={4}
                   placeholder="Es: colori preferiti, posizione del ricamo, testo da aggiungere, numero di pezzi…"
                   value={note}
                   onChange={e => setNote(e.target.value)}
                 />
 
-                <div style={styles.navRow}>
-                  <button style={styles.backBtn} onClick={() => setStep(1)}>← Indietro</button>
-                  <button style={styles.nextBtn} onClick={() => setStep(3)}>Continua →</button>
+                <div className="form-nav">
+                  <button className="btn-secondary" onClick={() => setStep(1)}>← Indietro</button>
+                  <button className="btn-primary" onClick={() => setStep(3)}>Continua →</button>
                 </div>
               </>
             )}
@@ -319,39 +312,39 @@ function Personalizza() {
             {/* Step 3 — Riepilogo */}
             {step === 3 && (
               <>
-                <p style={styles.label}>I tuoi dati</p>
+                <p className="field-label">I tuoi dati</p>
                 <input
-                  style={styles.input}
+                  className="field-input"
                   type="text"
                   placeholder="Il tuo nome (facoltativo)"
                   value={nome}
                   onChange={e => setNome(e.target.value)}
                 />
 
-                <div style={styles.riepilogo}>
-                  <div style={styles.riepilogoRow}>
-                    <span style={styles.riepilogoKey}>Prodotto</span>
-                    <span style={styles.riepilogoVal}>{prodDati?.label} — taglia {taglia}</span>
+                <div className="summary-box">
+                  <div className="summary-row">
+                    <span className="summary-key">Prodotto</span>
+                    <span className="summary-val">{prodDati?.label} — taglia {taglia}</span>
                   </div>
-                  <div style={styles.riepilogoRow}>
-                    <span style={styles.riepilogoKey}>Design</span>
-                    <span style={styles.riepilogoVal}>{imgSrc ? "✓ Caricato" : "Nessuna immagine"}</span>
+                  <div className="summary-row">
+                    <span className="summary-key">Design</span>
+                    <span className="summary-val">{imgSrc ? "✓ Caricato" : "Nessuna immagine"}</span>
                   </div>
-                  <div style={styles.riepilogoRow}>
-                    <span style={styles.riepilogoKey}>Note</span>
-                    <span style={styles.riepilogoVal}>{note || "—"}</span>
+                  <div className="summary-row">
+                    <span className="summary-key">Note</span>
+                    <span className="summary-val">{note || "—"}</span>
                   </div>
                 </div>
 
-                <p style={styles.hint}>
+                <p className="form-hint">
                   Premendo il bottone si aprirà WhatsApp con il riepilogo già scritto.
                   Isabella ti risponderà con un preventivo personalizzato.
                 </p>
 
-                <div style={styles.navRow}>
-                  <button style={styles.backBtn} onClick={() => setStep(2)}>← Indietro</button>
-                  <button style={styles.waBtn} onClick={inviaWhatsApp}>
-                    <span style={styles.waIcon}>💬</span> Richiedi preventivo
+                <div className="form-nav">
+                  <button className="btn-secondary" onClick={() => setStep(2)}>← Indietro</button>
+                  <button className="btn-whatsapp" onClick={inviaWhatsApp}>
+                    <span className="btn-whatsapp-icon">💬</span> Richiedi preventivo
                   </button>
                 </div>
               </>
@@ -359,18 +352,18 @@ function Personalizza() {
           </div>
 
           {/* ── COLONNA DESTRA — Anteprima ── */}
-          <div style={styles.right}>
-            <p style={styles.label}>Anteprima</p>
+          <div className="personalizza-col-right">
+            <p className="field-label">Anteprima</p>
             <div
               ref={previewRef}
-              style={styles.preview}
+              className="preview-box"
               onMouseMove={onMouseMove}
               onMouseUp={onMouseUp}
               onMouseLeave={onMouseUp}
               onTouchMove={onTouchMove}
               onTouchEnd={onMouseUp}
             >
-              <div style={styles.previewSvg}>
+              <div className="preview-svg">
                 <GarmentSVG prodotto={prodotto} />
               </div>
 
@@ -381,31 +374,26 @@ function Personalizza() {
                   draggable={false}
                   onMouseDown={onMouseDown}
                   onTouchStart={onTouchStart}
+                  className="preview-drag-img"
                   style={{
-                    position: "absolute",
                     left: `${imgPos.x}%`,
                     top:  `${imgPos.y}%`,
                     transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
                     width:  imgSize,
                     height: imgSize,
-                    objectFit: "cover",
-                    borderRadius: "6px",
-                    border: "1.5px solid #c47b8a",
                     cursor: dragging ? "grabbing" : "grab",
-                    userSelect: "none",
-                    boxShadow: "0 2px 8px rgba(196,123,138,0.25)",
                   }}
                 />
               )}
 
               {!imgSrc && (
-                <div style={styles.previewHint}>
+                <div className="preview-hint">
                   trascina qui la tua immagine dopo il caricamento
                 </div>
               )}
             </div>
 
-            <p style={styles.previewNote}>
+            <p className="preview-note">
               💡 Dopo aver caricato l'immagine puoi trascinarla sul prodotto per indicare la posizione del ricamo.
             </p>
           </div>
@@ -417,323 +405,3 @@ function Personalizza() {
 }
 
 export default Personalizza;
-// ─── Stili ─────────────────────────────────────────────────────────────────
-const ROSA      = "#c47b8a";
-const ROSA_LIGHT= "#fdf0f2";
-const ROSA_MID  = "#e8b4bf";
-
-const styles = {
-  section: {
-    background: "#fdf8f5",
-    padding: "5rem 1.5rem",
-    minHeight: "100vh",
-  },
-  container: {
-    maxWidth: "960px",
-    margin: "0 auto",
-  },
-  header: {
-    textAlign: "center",
-    marginBottom: "2.5rem",
-  },
-  h2: {
-    fontFamily: "'Playfair Display', Georgia, serif",
-    fontSize: "clamp(2rem, 5vw, 3rem)",
-    fontWeight: 400,
-    color: "#3a2a2e",
-    marginBottom: "0.5rem",
-  },
-  lead: {
-    fontSize: "1rem",
-    color: "#7a6068",
-    fontStyle: "italic",
-  },
-
-  // Step bar
-  steps: {
-    display: "flex",
-    gap: "0.5rem",
-    marginBottom: "2.5rem",
-    justifyContent: "center",
-  },
-  stepBtn: {
-    display: "flex",
-    alignItems: "center",
-    gap: "6px",
-    padding: "8px 18px",
-    borderRadius: "999px",
-    border: `1px solid ${ROSA_MID}`,
-    background: "transparent",
-    color: "#9a7880",
-    fontSize: "13px",
-    cursor: "pointer",
-    transition: "all 0.2s",
-  },
-  stepActive: {
-    background: ROSA,
-    color: "#fff",
-    border: `1px solid ${ROSA}`,
-    fontWeight: 500,
-  },
-  stepDone: {
-    background: ROSA_LIGHT,
-    color: ROSA,
-    border: `1px solid ${ROSA_MID}`,
-  },
-  stepNum: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "18px",
-    height: "18px",
-    borderRadius: "50%",
-    background: "rgba(255,255,255,0.3)",
-    fontSize: "11px",
-  },
-
-  // Layout
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "2rem",
-    alignItems: "start",
-  },
-  left:  { display: "flex", flexDirection: "column", gap: "0" },
-  right: { display: "flex", flexDirection: "column" },
-
-  label: {
-    fontSize: "11px",
-    fontWeight: 600,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    color: "#9a7880",
-    marginBottom: "10px",
-    marginTop: "0",
-  },
-
-  // Prodotti
-  prodGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "8px",
-    marginBottom: "1.5rem",
-  },
-  prodBtn: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "4px",
-    padding: "12px 8px",
-    border: "1px solid #e8dde0",
-    borderRadius: "12px",
-    background: "#fff",
-    cursor: "pointer",
-    transition: "all 0.15s",
-  },
-  prodBtnSel: {
-    border: `1.5px solid ${ROSA}`,
-    background: ROSA_LIGHT,
-    boxShadow: `0 0 0 3px rgba(196,123,138,0.12)`,
-  },
-  prodEmoji: { fontSize: "26px" },
-  prodLabel: { fontSize: "11px", color: "#7a6068" },
-
-  // Taglie
-  taglie: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "6px",
-    marginBottom: "1.5rem",
-  },
-  tagliaBtn: {
-    padding: "6px 16px",
-    borderRadius: "999px",
-    border: "1px solid #e8dde0",
-    background: "#fff",
-    fontSize: "12px",
-    color: "#7a6068",
-    cursor: "pointer",
-  },
-  tagliaBtnSel: {
-    background: ROSA,
-    color: "#fff",
-    border: `1px solid ${ROSA}`,
-  },
-
-  // Upload
-  uploadArea: {
-    border: `1.5px dashed ${ROSA_MID}`,
-    borderRadius: "12px",
-    background: ROSA_LIGHT,
-    minHeight: "110px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    padding: "1rem",
-    marginBottom: "0.75rem",
-    gap: "4px",
-    transition: "background 0.15s",
-  },
-  uploadIcon: { fontSize: "28px" },
-  uploadText: { fontSize: "13px", color: ROSA, fontWeight: 500 },
-  uploadHint: { fontSize: "11px", color: "#b09098" },
-  thumbImg: {
-    maxHeight: "80px",
-    maxWidth: "100%",
-    borderRadius: "8px",
-    objectFit: "contain",
-  },
-
-  // Controlli immagine
-  imgControls: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "6px",
-    marginBottom: "0.5rem",
-  },
-  ctrlBtn: {
-    padding: "5px 12px",
-    border: "1px solid #e8dde0",
-    borderRadius: "999px",
-    background: "#fff",
-    fontSize: "12px",
-    color: "#5a4048",
-    cursor: "pointer",
-  },
-  ctrlDanger: {
-    color: "#c44",
-    borderColor: "#f5c6cb",
-  },
-
-  // Textarea & Input
-  textarea: {
-    width: "100%",
-    border: "1px solid #e8dde0",
-    borderRadius: "10px",
-    padding: "10px 12px",
-    fontSize: "13px",
-    color: "#3a2a2e",
-    background: "#fff",
-    fontFamily: "inherit",
-    resize: "vertical",
-    outline: "none",
-    lineHeight: 1.6,
-    marginBottom: "1.5rem",
-    boxSizing: "border-box",
-  },
-  input: {
-    width: "100%",
-    border: "1px solid #e8dde0",
-    borderRadius: "10px",
-    padding: "10px 12px",
-    fontSize: "13px",
-    color: "#3a2a2e",
-    background: "#fff",
-    fontFamily: "inherit",
-    outline: "none",
-    marginBottom: "1rem",
-    boxSizing: "border-box",
-  },
-
-  // Riepilogo
-  riepilogo: {
-    border: "1px solid #e8dde0",
-    borderRadius: "12px",
-    overflow: "hidden",
-    marginBottom: "1rem",
-  },
-  riepilogoRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "10px 14px",
-    borderBottom: "1px solid #f2ece8",
-    fontSize: "13px",
-  },
-  riepilogoKey: { color: "#9a7880", fontWeight: 500 },
-  riepilogoVal: { color: "#3a2a2e", textAlign: "right", maxWidth: "60%" },
-
-  hint: {
-    fontSize: "12px",
-    color: "#b09098",
-    fontStyle: "italic",
-    marginBottom: "1.5rem",
-    lineHeight: 1.6,
-  },
-
-  // Nav bottoni
-  navRow: {
-    display: "flex",
-    gap: "10px",
-    justifyContent: "space-between",
-  },
-  nextBtn: {
-    padding: "11px 28px",
-    background: ROSA,
-    color: "#fff",
-    border: "none",
-    borderRadius: "999px",
-    fontSize: "14px",
-    fontWeight: 500,
-    cursor: "pointer",
-    flex: 1,
-  },
-  backBtn: {
-    padding: "11px 20px",
-    background: "transparent",
-    color: ROSA,
-    border: `1px solid ${ROSA_MID}`,
-    borderRadius: "999px",
-    fontSize: "14px",
-    cursor: "pointer",
-  },
-  waBtn: {
-    display: "flex",
-    alignItems: "center",
-    gap: "8px",
-    padding: "12px 24px",
-    background: "#25D366",
-    color: "#fff",
-    border: "none",
-    borderRadius: "999px",
-    fontSize: "14px",
-    fontWeight: 600,
-    cursor: "pointer",
-    flex: 1,
-    justifyContent: "center",
-  },
-  waIcon: { fontSize: "18px" },
-
-  // Preview
-  preview: {
-    position: "relative",
-    background: "#fff",
-    border: "1px solid #e8dde0",
-    borderRadius: "16px",
-    overflow: "hidden",
-    aspectRatio: "1",
-    userSelect: "none",
-  },
-  previewSvg: {
-    position: "absolute",
-    inset: 0,
-    padding: "12px",
-  },
-  previewHint: {
-    position: "absolute",
-    bottom: "12px",
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    fontSize: "11px",
-    color: "#c8a8b0",
-    fontStyle: "italic",
-  },
-  previewNote: {
-    marginTop: "10px",
-    fontSize: "11px",
-    color: "#b09098",
-    lineHeight: 1.6,
-  },
-};

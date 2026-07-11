@@ -6,10 +6,8 @@
 }
 
 body {
-  font-family: 'Georgia', serif;
-  background-color: #fff8f0;
+  font-family: var(--font-body);
   color: #222;
-  
 }
 
 .app {

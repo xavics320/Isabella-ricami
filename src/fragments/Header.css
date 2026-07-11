@@ -50,15 +50,14 @@
   width: 100px;
   height: 110px;
   object-fit: cover;
-  border: 2px solid #fbd5e8;
+  border: 2px solid var(--rosa-border);
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   border-radius: 4px;
   transition: transform 0.6s ease, box-shadow 0.8s ease;
-  animation: floatIn 0.8s ease both;
 }
 
 .logo-img:hover {
-  transform: translateY(-2px) scale(2.5);
+  transform: translateY(-2px) scale(2.5) rotate(0deg);
   box-shadow: 0 8px 20px #00000033;
   z-index: 10;
 }
@@ -67,6 +66,7 @@
   top: 35px;
   left: -70px;
   z-index: 1;
+  animation: floatInBack 0.8s ease both;
   animation-delay: 0s;
 }
 
@@ -74,6 +74,7 @@
   top: 5px;
   left: 0;
   z-index: 2;
+  animation: floatInMiddle 0.8s ease both;
   animation-delay: 0.15s;
 }
 
@@ -81,6 +82,7 @@
   top: 22px;
   left: 65px;
   z-index: 3;
+  animation: floatInFront 0.8s ease both;
   animation-delay: 0.35s;
 }
 
@@ -93,4 +95,19 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes floatInBack {
+  0% { opacity: 0; transform: translateY(10px) rotate(-7deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(-7deg); }
+}
+
+@keyframes floatInMiddle {
+  0% { opacity: 0; transform: translateY(10px) rotate(3deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(3deg); }
+}
+
+@keyframes floatInFront {
+  0% { opacity: 0; transform: translateY(10px) rotate(-4deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(-4deg); }
 }
