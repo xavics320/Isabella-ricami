@@ -1,10 +1,12 @@
-/* Personalizza.css */
+/* ── Sezione generale ── */
 .personalizza-section {
-  padding: 40px 20px 60px;
+  background: #fdf8f5;
+  padding: 6rem 2rem;
+  min-height: 100vh;
 }
 
 .personalizza-container {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -14,55 +16,54 @@
 }
 
 .personalizza-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 400;
-  color: var(--text-dark);
+  color: #3a2a2e;
   margin-bottom: 0.5rem;
 }
 
 .personalizza-lead {
-  font-family: var(--font-display);
-  font-style: italic;
+  font-family: Georgia, serif;
   font-size: 1rem;
-  color: var(--text-muted);
+  color: #7a6068;
+  font-style: italic;
 }
 
-/* Step indicator */
+/* ── Step bar ── */
 .step-row {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 2.5rem;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .step-btn {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 18px;
-  border-radius: 8px;
-  border: 1.5px solid var(--rosa-mid);
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #e8b4bf;
   background: transparent;
-  color: #9a7880;
-  font-size: 13px;
-  font-family: inherit;
+  color: #444;
+  font-family: Georgia, serif;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.6s ease, background-color 0.7s ease;
 }
 
 .step-btn--active {
-  background: var(--rosa);
+  background: #c47b8a;
   color: #fff;
-  border-color: var(--rosa);
-  font-weight: 500;
+  border: 1px solid #c47b8a;
+  font-weight: bold;
 }
 
 .step-btn--done {
-  background: var(--rosa-light);
-  color: var(--rosa);
-  border-color: var(--rosa-mid);
+  background: #fff9fd;
+  color: #c47b8a;
+  border: 1px solid #e8b4bf;
 }
 
 .step-num {
@@ -76,38 +77,37 @@
   font-size: 11px;
 }
 
-/* Layout */
+/* ── Layout griglia ── */
 .personalizza-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 4rem;
   align-items: start;
 }
 
-.personalizza-col-left {
-  display: flex;
-  flex-direction: column;
-}
-
+.personalizza-col-left,
 .personalizza-col-right {
   display: flex;
   flex-direction: column;
 }
 
+/* ── Label ── */
 .field-label {
-  font-size: 11px;
+  font-family: Georgia, serif;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0 0 10px 0;
+  color: #c47b8a;
+  margin-bottom: 10px;
+  margin-top: 0;
 }
 
 .field-label--spaced {
   margin-top: 1.5rem;
 }
 
-/* Prodotti */
+/* ── Griglia prodotti ── */
 .prod-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -121,30 +121,29 @@
   align-items: center;
   gap: 4px;
   padding: 12px 8px;
-  border: 1.5px solid var(--rosa-border);
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   background: #fff;
-  font-family: inherit;
   cursor: pointer;
-  transition: all 0.15s ease;
+  font-family: Georgia, serif;
+  transition: color 0.6s ease, background-color 0.7s ease;
 }
 
 .prod-btn--selected {
-  border-color: var(--rosa);
-  background: var(--rosa-light);
+  border: 1.5px solid #c47b8a;
+  background: #fff9fd;
   box-shadow: 0 0 0 3px rgba(196, 123, 138, 0.12);
 }
 
-.prod-emoji {
-  font-size: 26px;
-}
+.prod-emoji { font-size: 24px; }
 
 .prod-label {
-  font-size: 11px;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-family: Georgia, serif;
+  color: #444;
 }
 
-/* Taglie */
+/* ── Taglie ── */
 .taglia-row {
   display: flex;
   flex-wrap: wrap;
@@ -153,63 +152,66 @@
 }
 
 .taglia-btn {
-  padding: 6px 16px;
-  border-radius: 8px;
-  border: 1.5px solid var(--rosa-border);
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
   background: #fff;
-  font-size: 12px;
-  color: var(--text-muted);
-  font-family: inherit;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #444;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: color 0.6s ease, background-color 0.7s ease;
 }
 
 .taglia-btn--selected {
-  background: var(--rosa);
+  background: #c47b8a;
   color: #fff;
-  border-color: var(--rosa);
+  border: 1px solid #c47b8a;
+  font-weight: bold;
 }
 
-/* Upload */
+/* ── Upload ── */
 .upload-area {
-  border: 1.5px dashed var(--rosa-mid);
-  border-radius: 8px;
-  background: var(--rosa-light);
+  border: 1.5px dashed #e8b4bf;
+  border-radius: 4px;
+  background: #fff9fd;
   min-height: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  cursor: pointer;
   padding: 1rem;
   margin-bottom: 0.75rem;
-  cursor: pointer;
-  transition: background 0.15s ease;
+  gap: 4px;
+  transition: background 0.2s ease;
 }
 
-.upload-icon {
-  font-size: 28px;
-}
+.upload-area:hover { background: #fde8ee; }
+
+.upload-icon { font-size: 26px; }
 
 .upload-text {
-  font-size: 13px;
-  color: var(--rosa);
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #c47b8a;
   font-weight: 500;
 }
 
 .upload-hint {
-  font-size: 11px;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
   color: #b09098;
 }
 
 .upload-thumb {
   max-height: 80px;
   max-width: 100%;
-  border-radius: 8px;
+  border-radius: 4px;
   object-fit: contain;
 }
 
-/* Controlli immagine */
+/* ── Controlli immagine ── */
 .img-controls {
   display: flex;
   flex-wrap: wrap;
@@ -218,15 +220,20 @@
 }
 
 .ctrl-btn {
-  padding: 5px 12px;
-  border: 1.5px solid var(--rosa-border);
-  border-radius: 8px;
+  padding: 6px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   background: #fff;
-  font-size: 12px;
-  color: #5a4048;
-  font-family: inherit;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #444;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: color 0.6s ease, background-color 0.7s ease;
+}
+
+.ctrl-btn:hover {
+  color: #111;
+  background-color: #fff9fd;
 }
 
 .ctrl-btn--danger {
@@ -234,142 +241,188 @@
   border-color: #f5c6cb;
 }
 
-/* Textarea & Input */
-.field-textarea,
+/* ── Textarea e Input ── */
+.field-textarea {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  color: #444;
+  background: #fff;
+  font-family: Georgia, serif;
+  resize: vertical;
+  outline: none;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.field-textarea:focus { border-color: #c47b8a; }
+
 .field-input {
   width: 100%;
-  border: 1.5px solid var(--rosa-border);
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   padding: 10px 12px;
-  font-size: 13px;
-  color: var(--text-dark);
+  font-size: 1rem;
+  color: #444;
   background: #fff;
-  font-family: inherit;
+  font-family: Georgia, serif;
   outline: none;
+  margin-bottom: 10px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-.field-textarea {
-  resize: vertical;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
+.field-input:focus { border-color: #c47b8a; }
 
-.field-input {
-  margin-bottom: 1rem;
-}
-
-/* Riepilogo */
+/* ── Riepilogo ── */
 .summary-box {
-  border: 1.5px solid var(--rosa-border);
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   overflow: hidden;
   margin-bottom: 1rem;
+  background: #fff;
 }
 
 .summary-row {
   display: flex;
   justify-content: space-between;
   padding: 10px 14px;
-  border-bottom: 1px solid var(--rosa-light);
-  font-size: 13px;
+  border-bottom: 1px solid #f2ece8;
+  font-family: Georgia, serif;
+  font-size: 1rem;
 }
 
-.summary-row:last-child {
-  border-bottom: none;
-}
+.summary-row:last-child { border-bottom: none; }
 
-.summary-key {
-  color: var(--text-muted);
-  font-weight: 500;
-}
+.summary-key { color: #7a6068; font-weight: 500; }
 
 .summary-val {
-  color: var(--text-dark);
+  color: #3a2a2e;
   text-align: right;
   max-width: 60%;
 }
 
+/* ── Hint e errori ── */
 .form-hint {
-  font-size: 12px;
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
   color: #b09098;
   font-style: italic;
+  line-height: 1.7;
   margin-bottom: 1.5rem;
-  line-height: 1.6;
 }
 
-/* Nav bottoni */
+.errore-msg {
+  font-family: Georgia, serif;
+  font-size: 0.9rem;
+  color: #c44;
+  margin-bottom: 0.75rem;
+  padding: 8px 12px;
+  background: #fff0f0;
+  border-radius: 4px;
+  border: 1px solid #f5c6c6;
+}
+
+/* ── Bottoni navigazione ── */
 .form-nav {
   display: flex;
   gap: 10px;
   justify-content: space-between;
 }
 
-.btn-primary,
-.btn-secondary,
-.btn-whatsapp {
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
 .btn-primary {
-  padding: 11px 28px;
-  background: var(--rosa);
-  color: #fff;
-  border: none;
-  font-weight: 500;
   flex: 1;
+  padding: 6px 14px;
+  background: #c47b8a;
+  color: #fff;
+  border: 1px solid #c47b8a;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.6s ease, background-color 0.7s ease;
 }
 
-.btn-primary:hover {
-  background: #af6674;
-}
+.btn-primary:hover { background: #b86a79; border-color: #b86a79; }
 
 .btn-secondary {
-  padding: 11px 20px;
+  padding: 6px 14px;
   background: transparent;
-  color: var(--rosa);
-  border: 1.5px solid var(--rosa-mid);
+  color: #444;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.6s ease, background-color 0.7s ease;
 }
 
-.btn-secondary:hover {
-  background: var(--rosa-light);
-}
+.btn-secondary:hover { color: #111; background-color: #fff9fd; }
 
 .btn-whatsapp {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
-  background: #25d366;
+  padding: 6px 14px;
+  background: #25D366;
   color: #fff;
   border: none;
-  font-weight: 600;
-  flex: 1;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.btn-whatsapp:hover {
-  background: #1ebc59;
+.btn-whatsapp:hover { background: #1fb855; }
+
+.btn-whatsapp-icon { font-size: 16px; }
+
+/* ── Conferma invio ── */
+.success-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2rem 1rem;
 }
 
-.btn-whatsapp-icon {
-  font-size: 18px;
+.success-icon { font-size: 40px; }
+
+.success-titolo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #3a2a2e;
+  margin: 0;
 }
 
-/* Preview */
+.success-testo {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #7a6068;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Preview capo ── */
 .preview-box {
   position: relative;
   background: #fff;
-  border: 2px solid var(--rosa-border);
-  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 1;
   user-select: none;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .preview-svg {
@@ -378,35 +431,43 @@
   padding: 12px;
 }
 
+.preview-drag-img {
+  position: absolute;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1.5px solid #c47b8a;
+  box-shadow: 0 2px 8px rgba(196, 123, 138, 0.25);
+  user-select: none;
+}
+
 .preview-hint {
   position: absolute;
   bottom: 12px;
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 11px;
-  color: #c8a8b0;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  color: #b09098;
   font-style: italic;
 }
 
 .preview-note {
   margin-top: 10px;
-  font-size: 11px;
-  color: #b09098;
-  line-height: 1.6;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
+  color: #7a6068;
+  line-height: 1.8;
 }
 
-.preview-drag-img {
-  position: absolute;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1.5px solid var(--rosa);
-  user-select: none;
-  box-shadow: 0 2px 8px rgba(196, 123, 138, 0.25);
-}
-
-@media (max-width: 800px) {
+/* ── Responsive ── */
+@media (max-width: 768px) {
   .personalizza-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

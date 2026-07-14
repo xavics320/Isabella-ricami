@@ -23,7 +23,6 @@ function Navbar() {
     { id: 1, label: 'Chi siamo', href: '#chi-siamo' },
     { id: 2, label: 'Idee', href: '#idee' },
     { id: 3, label: 'Personalizza', href: '#personalizza' },
-    { id: 4, label: 'Fai un preventivo', href: '#preventivo' },
     { id: 5, label: 'Contatti', href: '#contatti' },
   ];
 
