@@ -2,11 +2,15 @@
 .navbar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   padding: 11px 40px;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
   background-color: #fff9fd;
-  margin: 40px 0 50px 0;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
   animation: floatIn 0.8s ease both;
 }
 
@@ -52,12 +56,25 @@
   user-select: none;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  transition: box-shadow 0.25s ease, background 0.25s ease;
+.navbar-brand{
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'playfair display', Georgia, serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #C47b8a;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* evita che il brand interferisca con i click sugli altri link */
 }
+
+.navbar-brand--visible {
+  opacity: 1;
+  pointer-events: none;
+}
+
  
 /* Ombra leggera quando si scrolla — dà profondità senza essere pesante */
 .navbar--scrolled {
