@@ -6,6 +6,9 @@
   margin-top: 20px;
   align-items: start;
   animation: floatIn 0.8s ease both;
+  background-color: #fdf0f2;
+  background-size: cover;
+  background-position: center center;
 }
 
 .idee-titolo {
