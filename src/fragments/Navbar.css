@@ -7,9 +7,17 @@
   top: 0;
   z-index: 100;
   padding: 19px 40px;
-  border-bottom: 1px solid #fdf8f5;
-  background-color: #fff9fd;
-  transition: box-shadow 0.25s ease, background 0.25s ease;
+  overflow: visible;
+
+  /* Sfumatura: parte trasparente in alto, diventa #fff9fd in basso */
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 249, 253, 0) 0%,
+    rgba(253, 249, 253, 0.85) 40%,
+    rgba(253, 249, 253, 1) 100%
+  );
+
+  transition: box-shadow 0.25s ease, background 0.4s ease;
   animation: floatIn 0.8s ease both;
 }
 
@@ -17,6 +25,8 @@
   list-style: none;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   margin: 0;
   padding: 0;
@@ -39,7 +49,7 @@
 
 .navbar-link:hover {
   color: #111;
-  background-color: var(--rosa-border);
+  background-color: #e8b4bf;
 }
 
 .navbar-link.active {
@@ -55,18 +65,19 @@
   user-select: none;
 }
 
-.navbar-brand{
+/* Brand — posizionato a sinistra, non tagliato */
+.navbar-brand {
   position: absolute;
-  left: 15.5rem;
+  left: 7.5rem;       /* spostato a sinistra, lontano dai link */
   top: 50%;
   transform: translateY(-50%);
   font-family: 'Great Vibes', cursive;
-  font-style: italic;
   font-size: 2.8rem;
   color: #c47b8a;
+  white-space: nowrap; /* impedisce il taglio del testo */
   opacity: 0;
   transition: opacity 0.4s ease;
-  pointer-events: none; /* evita che il brand interferisca con i click sugli altri link */
+  pointer-events: none;
 }
 
 .navbar-brand--visible {
@@ -74,10 +85,45 @@
   pointer-events: none;
 }
 
- 
-/* Ombra leggera quando si scrolla — dà profondità senza essere pesante */
+/* Quando si scrolla: sfondo solido + ombra, sovrascrive il gradiente */
 .navbar--scrolled {
   background: rgba(253, 248, 245, 0.96);
   backdrop-filter: blur(6px);
   box-shadow: 0 1px 12px rgba(196, 123, 138, 0.12);
+  border-bottom: 1px solid #f7e7de;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar {
+    padding: 14px 16px;
+  }
+
+  .navbar-brand {
+    display: none;
+  }
+
+  .navbar-list {
+    gap: 6px 16px;
+  }
+
+  .navbar-link {
+    font-size: 0.92rem;
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar-list {
+    gap: 4px 10px;
+  }
+
+  .navbar-link {
+    font-size: 0.82rem;
+    padding: 4px 6px;
+  }
+
+  .navbar-separator {
+    display: none;
+  }
 }

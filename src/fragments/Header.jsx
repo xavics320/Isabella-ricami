@@ -5,7 +5,7 @@ function Header() {
     <header className="header">
       <div className="intestazione">
         <div className="logo-images">
-        <img src="/logo1.jpg" alt="Logo Isabella Ricami" className="logo-img" loading="eager" />
+        <img src="/logo1-nobg.png" alt="Logo Isabella Ricami" className="logo-img" loading="eager" />
         </div>
           <div className="brand">
             <h1 className="brand-name">Isabella</h1>

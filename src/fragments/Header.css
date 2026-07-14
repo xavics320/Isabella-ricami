@@ -4,59 +4,72 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 70px 0 40px 0;
-  background-image: 
-    linear-gradient(rgba(253, 240, 242, 0.8), rgba(253, 240, 242, 0.4)),
+  padding: 70px 20px 40px;
+  background-image:
+    linear-gradient(rgba(253, 240, 242, 0.4), rgba(253, 240, 242, 0.4)),
     url('../../public/imagemacchina.jpg');
   background-position: center center;
   background-size: cover;
-  min-height: 40vh; /* dà respiro all'header */
+  min-height: 20vh; 
 }
 
 .intestazione {
     display: flex;
     align-items: center;
-    gap: 2px;
+    justify-content: center;
+    margin-left: -17rem;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .brand {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    
 }
 
 .brand-name {
     font-family: 'Great Vibes', cursive;
-    font-size: 5rem;
+    font-size: clamp(2.6rem, 9vw, 5rem);
     font-weight: 400;
-    line-height: 1;
+    line-height: 4rem;
     margin: 0;
 }
 
 .brand-subtitle {
     font-family: 'Great Vibes', cursive;
-    font-size: 2.1rem;
-    margin-top: -12px;
-    margin-left: 8rem;
+    font-size: clamp(1.15rem, 4vw, 2.1rem);
+    margin-top: 0;
+    align-self: flex-end;
+    margin-right: -3.2em;
     color: #444;
 }
 
 .logo-images {
-  position: relative;
-  width: 120px;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  margin: 0 60px 60px 0;
 }
 
 .logo-img {
-  position: absolute;
-  width: auto;
-  height: 140px;
+  width: 200px;
+  height: auto;
   object-fit: cover;
-  border: 2px solid var(--rosa-border);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 48px 16px 28px;
+    min-height: 32vh;
+  }
+
+  .brand-subtitle {
+    align-self: center;
+    margin-right: 0;
+  }
 }
 
 @keyframes floatIn {

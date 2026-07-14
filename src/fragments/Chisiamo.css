@@ -24,6 +24,7 @@
   aspect-ratio: 4/3;
   object-fit: cover;
   border-radius: 16px;
+  border: 1.5px solid #d5a5af;
   box-shadow: 0 8px 32px rgba(196, 123, 138, 0.15);
   transition: opacity 0.3s ease;
 }
