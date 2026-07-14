@@ -7,7 +7,7 @@
   padding: 70px 0 40px 0;
   background-image: 
     linear-gradient(rgba(253, 240, 242, 0.8), rgba(253, 240, 242, 0.4)),
-    url('/Users/mac/isabella-ricami/public/imagemacchina.jpg');
+    url('../../public/imagemacchina.jpg');
   background-position: center center;
   background-size: cover;
   min-height: 40vh; /* dà respiro all'header */
